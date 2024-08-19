@@ -1,0 +1,1 @@
+static const char *roficmd[] = { "rofi", "-show", "run", "-theme", "default", "-font", dmenufont, "-color-window", col_gray1, "-color-normal", col_gray3, "-color-active", col_cyan, "-color-urgent", col_gray4, NULL };
