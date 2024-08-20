@@ -91,6 +91,9 @@ static const Key keys[] = {
 	/*light(package) is used for controlling brightness */
 	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
 	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},
+	{MODKEY,			XK_F2,	   spawn,		   SHCMD("amixer set Master 1%-")},
+	{MODKEY,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+")},
+	{MODKEY,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle")},
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
