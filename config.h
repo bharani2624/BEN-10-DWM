@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "A", "B", "C", "D", "E", "F", "G", "H", "I" };
+static const char *tags[] = { "B", "E", "N", "-", "1", "0", "0", "0", "0" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -42,9 +42,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "(ALIEN-X)",      tile },    /* first entry is default */
-	{ "(OOOOOOO)",      NULL },    /* no layout function means floating behavior */
-	{ "(BEN-10)",      monocle },
+	{ "(BEN-10)",      tile },    /* BEN-10 IS DEFAULT */
+	{ "(GOOP)",      NULL },    /*GOOP REFERS FLOATING TILE */
+	{ "(ALIEN-X)",      monocle },/*ALIEN-X REFERS TO MONOCLE */
 };
 
 /* key definitions */
@@ -88,8 +88,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{MODKEY,   						XK_F5,     spawn,		   SHCMD("light -U 10")	},
-	{MODKEY,						XK_F6,	   spawn,		   SHCMD("light -A 10")},
+	/*light(package) is used for controlling brightness */
+	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
+	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
