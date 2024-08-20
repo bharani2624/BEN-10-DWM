@@ -42,9 +42,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "(X)",      tile },    /* first entry is default */
-	{ "(BEN-10)",      NULL },    /* no layout function means floating behavior */
-	{ "(X)",      monocle },
+	{ "(ALIEN-X)",      tile },    /* first entry is default */
+	{ "(OOOOOOO)",      NULL },    /* no layout function means floating behavior */
+	{ "(BEN-10)",      monocle },
 };
 
 /* key definitions */
@@ -67,7 +67,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rcmd } },
-	{ MODKEY,          	        	XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,          	        XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -88,6 +88,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{MODKEY,   						XK_F5,     spawn,		   SHCMD("light -U 10")	},
+	{MODKEY,						XK_F6,	   spawn,		   SHCMD("light -A 10")},
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
