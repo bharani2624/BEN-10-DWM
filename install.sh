@@ -1,20 +1,20 @@
 #!/bin/sh
 sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh
-touch ~/Downloads/.xinitrc
+touch ~/.xinitrc
 
-code=($cat<<EOF
+cat<<EOF > ~/.xinitrc
 feh --bg-fill ~/abdwm/10.jpg
 picom &
 exec dwm
-EOF)
-if grep -qxF "$code" ~/Downloads/.xinitrc;
-then echo "$code"<<.xinitrc
-fi
+EOF
+# if grep -qxF "$code" ~/Downloads/.xinitrc;
+# then echo "$code">.xinitrc
+# fi
 
 mkdir ~/.config/picom
 touch ~/.config/picom/picom.conf
 
-picom=($cat EOF
+cat<<EOF >~/.config/picom/picom.conf
 opacity-rule=[
         "90:class_g='Rofi'"
 ];
@@ -24,34 +24,35 @@ frame-opacity = 0.90;*/
 inactive-opacity=0.90;
 active-opacity=0.90;
 frame-opacity=1.0;
-EOF)
-echo "$picom"<<~/.config/picom/picom.conf
+EOF
+
+# echo "$picom">~/.config/picom/picom.conf
 
 sudo apt install light
 sudo apt install picom
 sudo apt install rofi
 mkdir ~/.config/rofi/shared
 touch ~/.config/rofi/shared/colors.rasi
-color=($cat
-EOF 
+cat
+<<EOF >~/.config/rofi/shared/colors.rasi
 @import "~/.config/rofi/colors/ben10"
-EOF)
+EOF
 
-echo "$color"<<~/.config/rofi/shared/colors.rasi
+# echo "$color">~/.config/rofi/shared/colors.rasi
 
 touch ~/.config/rofi/shared/fonts.rasi
 
-fonts=($cat
-EOF
+cat<<
+EOF >~/.config/rofi/shared/fonts.rasi
 * {
     font: "JetBrains Mono Nerd Font 15";
 }
-EOF)
-echo "$fonts"<<~/.config/rofi/shared/fonts.rasi
+EOF
+# echo "$fonts">~/.config/rofi/shared/fonts.rasi
 mkdir ~/.config/rofi/colors
 
 touch ~/.config/rofi/colors/ben10.rasi
-ben10=($cat EOF 
+cat <<EOF> ~/.config/rofi/colors/ben10.rasi
 *{
     background: #00000050;
     background-alt:#222222;
@@ -61,13 +62,13 @@ ben10=($cat EOF
     urgent:#fbfbfd;
 
 }
-EOF)
-echo "$ben10"<<~/.config/rofi/colors/ben10.rasi
+EOF
+#echo "$ben10">~/.config/rofi/colors/ben10.rasi
 
 touch ~/.config/rofi/config.rasi
 
-config=($cat
-EOF 
+cat<<
+EOF >~/.config/rofi/config.rasi
 configuration {
     modi:                   "drun,run,filebrowser";
     show-icons:                 true;
