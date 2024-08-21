@@ -66,8 +66,8 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = rcmd } },
-	{ MODKEY,          	        XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return,  spawn,         {.v = rcmd } },
+	{ MODKEY,          	        XK_x,	    spawn,         {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -94,7 +94,7 @@ static const Key keys[] = {
 	{MODKEY,			XK_F2,	   spawn,		   SHCMD("amixer set Master 1%-")},
 	{MODKEY,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+")},
 	{MODKEY,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle")},
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

@@ -54,10 +54,11 @@ mkdir ~/.config/rofi/colors
 touch ~/.config/rofi/colors/ben10.rasi
 cat <<EOF> ~/.config/rofi/colors/ben10.rasi
 *{
-    background: #00000050;
+    background:#00000090;
     background-alt:#222222;
     foreground:#328336;
     selected:#328336;
+    black:#222222;
     active:#328336;
     urgent:#fbfbfd;
 
@@ -164,7 +165,7 @@ inputbar {
     border-radius:               0px;
     border-color:                @border-colour;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  @black;
     children:                    [ "prompt", "textbox-prompt-colon", "entry" ];
 }
 
