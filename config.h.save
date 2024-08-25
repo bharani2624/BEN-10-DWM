@@ -71,7 +71,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
@@ -91,9 +91,9 @@ static const Key keys[] = {
 	/*light(package) is used for controlling brightness */
 	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
 	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},
-	{MODKEY,			XK_F2,	   spawn,		   SHCMD("amixer set Master 1%- && notify-send 'Volume' \"$(amixer get Master| awk -F '[][]' '/Left:/ {print $2}')\"")},
-	{MODKEY	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+ && notify-send 'Volume' \"$(amixer sget Master|awk -F '[][]' '/Left:/ {print $2}')\"" )},
-	{MODKEY	,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle && notify-send 'Mute'")},
+	{0	,			XK_F2,	   spawn,		   SHCMD("amixer set Master 1%-")},
+	{0	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+")},
+	{0	,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle")},
 	{MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
