@@ -1,9 +1,9 @@
 #!/bin/sh
-sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh dunst picom alacritty
+sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh
 touch ~/.xinitrc
 
 cat<<EOF > ~/.xinitrc
-feh --bg-fill ~/Downloads/BEN-10-DWM/10.jpg
+feh --bg-fill ~/Downloads/pxfuel.jpg
 picom &
 slstatus &
 dunst &
