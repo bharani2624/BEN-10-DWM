@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0.5;        /* border pixel of windows */
+static const unsigned int borderpx  = 0.8;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -76,7 +76,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return,  spawn,         {.v = rcmd } },
-	{ MODKEY,          	        XK_x,	    spawn,         {.v = termcmd } },
+	{ MODKEY,          	            XK_x,	    spawn,         {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -99,6 +99,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_Right,  viewnext,       {0} },
+	{ MODKEY,                       XK_Left,   viewprev,       {0} },
+    { MODKEY|ShiftMask,             XK_Right,  tagtonext,      {0} },
+	{ MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} },
+	{MODKEY,			XK_Print,  spawn,	  SHCMD("scrot") },
 	/*light(package) is used for controlling brightness */
 	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
 	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},

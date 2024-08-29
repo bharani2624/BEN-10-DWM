@@ -1,0 +1,22 @@
+--- dwm.c	2021-10-02 13:57:18.011307099 +0100
++++ dwm.c	2021-10-02 14:21:17.063622953 +0100
+@@ -183,8 +183,10 @@ static void maprequest(XEvent *e);
+ static void monocle(Monitor *m);
+ static void motionnotify(XEvent *e);
+ static void movemouse(const Arg *arg);
++static unsigned int nexttag(void);
+ static Client *nexttiled(Client *c);
+ static void pop(Client *);
++static unsigned int prevtag(void);
+ static void propertynotify(XEvent *e);
+ static void quit(const Arg *arg);
+ static Monitor *recttomon(int x, int y, int w, int h);
+@@ -208,6 +210,8 @@ static void sigchld(int unused);
+ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
++static void tagtonext(const Arg *arg);
++static void tagtoprev(const Arg *arg);
+ static void tile(Monitor *);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
