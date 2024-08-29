@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh dunst picom alacritty
+sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh dunst picom alacritty scrot
 touch ~/.xinitrc
 
 cat<<EOF > ~/.xinitrc
