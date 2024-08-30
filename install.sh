@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh dunst picom alacritty scrot
+curl -sS https://starship.rs/install.sh | sh
 touch ~/.xinitrc
-
 cat<<EOF > ~/.xinitrc
 feh --bg-fill ~/Downloads/BEN-10-DWM/10.jpg
 picom &
