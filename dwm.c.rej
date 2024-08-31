@@ -1,21 +1,21 @@
---- dwm.c	2024-06-21 14:06:47.127064311 +0200
-+++ dwm-6.5/dwm.c	2024-03-19 12:24:52.000000000 +0100
-@@ -1330,16 +1317,8 @@ resizemouse(const Arg *arg)
+--- dwm-6.5/dwm.c	2024-03-19 12:24:52.000000000 +0100
++++ dwm.c	2024-06-21 14:06:47.127064311 +0200
+@@ -1343,8 +1356,16 @@ resizemouse(const Arg *arg)
  				continue;
  			lasttime = ev.xmotion.time;
  
--			nx = horizcorner && ocx2 - ev.xmotion.x >= c->minw ? ev.xmotion.x : c->x;
--			ny = vertcorner && ocy2 - ev.xmotion.y >= c->minh ? ev.xmotion.y : c->y;
--			nw = MAX(horizcorner ? (ocx2 - nx) : (ev.xmotion.x - ocx - 2 * c->bw + 1), 1);
--			nh = MAX(vertcorner ? (ocy2 - ny) : (ev.xmotion.y - ocy - 2 * c->bw + 1), 1);
--
--			if (horizcorner && ev.xmotion.x > ocx2)
--				nx = ocx2 - (nw = c->minw);
--			if (vertcorner && ev.xmotion.y > ocy2)
--				ny = ocy2 - (nh = c->minh);
--
-+			nw = MAX(ev.xmotion.x - ocx - 2 * c->bw + 1, 1);
-+			nh = MAX(ev.xmotion.y - ocy - 2 * c->bw + 1, 1);
+-			nw = MAX(ev.xmotion.x - ocx - 2 * c->bw + 1, 1);
+-			nh = MAX(ev.xmotion.y - ocy - 2 * c->bw + 1, 1);
++			nx = horizcorner && ocx2 - ev.xmotion.x >= c->minw ? ev.xmotion.x : c->x;
++			ny = vertcorner && ocy2 - ev.xmotion.y >= c->minh ? ev.xmotion.y : c->y;
++			nw = MAX(horizcorner ? (ocx2 - nx) : (ev.xmotion.x - ocx - 2 * c->bw + 1), 1);
++			nh = MAX(vertcorner ? (ocy2 - ny) : (ev.xmotion.y - ocy - 2 * c->bw + 1), 1);
++
++			if (horizcorner && ev.xmotion.x > ocx2)
++				nx = ocx2 - (nw = c->minw);
++			if (vertcorner && ev.xmotion.y > ocy2)
++				ny = ocy2 - (nh = c->minh);
++
  			if (c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
  			&& c->mon->wy + nh >= selmon->wy && c->mon->wy + nh <= selmon->wy + selmon->wh)
  			{
