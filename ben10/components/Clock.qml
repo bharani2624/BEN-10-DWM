@@ -15,6 +15,7 @@ ColumnLayout {
 
     PlasmaComponents3.Label
     {
+        id:ben10
         text:"BEN-10"
         font.pointSize:50
         font.family:"GROBOLD"
@@ -22,6 +23,50 @@ ColumnLayout {
         styleColor: softwareRendering ? PlasmaCore.ColorScope.backgroundColor : "#FFFFFF" 
         color:"#328336"
         // backgroundColor:"black"
+        // ColorAnimation on color { 
+        //     from:"green"
+        //     to: "black"; duration: 2000
+        //     loops:Animation.Infinite
+        //     easing.type:Easing.InOutQuad
+        //      }
+        SequentialAnimation on color
+        {
+            loops:Animation.Infinite
+            ColorAnimation
+            {
+                from:"green"
+                to:"black";
+                duration:1000
+                easing.type:Easing.InOutQuad
+
+            }
+            // PauseAnimation{duration:500}
+            ColorAnimation
+            {
+                from:"black"
+                to:"green";
+                duration:1000
+                easing.type:Easing.InOutQuad
+            }
+        }
+        //     SpringAnimation{
+        //     to: 300
+        //     spring: 5
+        //     damping: 0.2
+        //     loops: Animation.Infinite
+        // }
+
+    
+    // ColorAnimation
+    // {
+    //     target:ben10
+    //     property:"color"
+    //     from:"black"
+    //     to:"green"
+    //     duration:2000
+    //     easing.type:Easing.InOutQuad
+    //     loops:Animation.Infinite
+    // }
     }
     PlasmaComponents3.Label {
         text: Qt.formatTime(timeSource.data["Local"]["DateTime"])
@@ -34,6 +79,7 @@ ColumnLayout {
         // text.color:"#FF5733" 
         Layout.alignment: Qt.AlignHCenter
     }
+
     // PlasmaComponents3.Label {
     //     text: Qt.formatDate(timeSource.data["Local"]["DateTime"], Qt.DefaultLocaleLongDate)
     //     style: softwareRendering ? Text.Outline : Text.Normal
