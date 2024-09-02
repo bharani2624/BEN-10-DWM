@@ -27,7 +27,7 @@ cd BEN-10-DWM
 
 ## 🐞 Issues and Feedback
 
-The project is in active development. If you have any suggestions or encounter any issues, please submit feedback via the [GitHub Issues page](https://github.com//Training_performance_tacker/issues](https://github.com/bharani2624/BEN-10-DWM/issues).
+The project is in active development. If you have any suggestions or encounter any issues, please submit feedback via the [GitHub Issues page](https://github.com/bharani2624/BEN-10-DWM/issues).
 
 ## 🛠 Contributing
 
