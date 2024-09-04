@@ -29,7 +29,7 @@ Item {
         NumberAnimation {
             target: wallpaperFader
             property: "factor"
-            duration: PlasmaCore.Units.veryLongDuration * 2
+            duration: PlasmaCore.Units.veryLongDuration * 0.5
             easing.type: Easing.InOutQuad
         }
     }
