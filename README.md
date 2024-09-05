@@ -15,10 +15,10 @@
 ## 🚀 Getting Started
 
 The install script will install **DWM**, **SDDM**, and **Picom**.
-### Clone this repository At ~/ or home
+### Clone this repository
 ```bash
-git clone https://github.com/bharani2624/BEN-10-DWM
-cd BEN-10-DWM
+git clone https://github.com/bharani2624/BEN-10-DWM ~/BEN-10-DWM
+cd ~/BEN-10-DWM
 ```
 ### Run the install script
 ```bash
