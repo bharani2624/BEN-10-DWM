@@ -7,6 +7,7 @@ host=`hostname`
 shutdown=' Shutdown'
 reboot=' Reboot'
 wifi=' WiFi'
+bt=' BlueTooth'
 yes=' Yes'
 no=' No'
 
@@ -34,7 +35,7 @@ confirm_exit() {
 }
 
 run_rofi() {
-	echo -e "$shutdown\n$reboot\n$wifi" | rofi_cmd
+	echo "$shutdown\n$reboot\n$wifi\n$bt" | rofi_cmd
 }
 
 run_cmd() {
@@ -60,4 +61,7 @@ case ${chosen} in
     $wifi) 
         "$HOME/.config/rofi/wifi.sh"
         ;;
+	$bt)
+		"$HOME/.config/rofi/bt.sh"
+		;;
 esac

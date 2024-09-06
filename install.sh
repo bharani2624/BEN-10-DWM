@@ -36,6 +36,8 @@ sudo apt install light
 sudo apt install picom
 sudo apt install rofi
 mkdir ~/.config/rofi/shared
+sudo cp ~/BEN-10-DWM/requirements/wifi.sh ~/.config/rofi/
+sudo cp ~/BEN-10-DWM/requirements/bt.sh ~/.config/rofi/
 touch ~/.config/rofi/shared/colors.rasi
 cat
 <<EOF >~/.config/rofi/shared/colors.rasi
