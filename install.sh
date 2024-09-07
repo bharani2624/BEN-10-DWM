@@ -14,7 +14,8 @@ EOF
 # if grep -qxF "$code" ~/Downloads/.xinitrc;
 # then echo "$code">.xinitrc
 # fi
-
+sudo mkdir /usr/share/fonts/truetype/ben10
+sudo cp ~/BEN-10-DWM/GROBOLD.ttf /usr/share/fonts/truetype/ben10
 mkdir ~/.config/picom
 touch ~/.config/picom/picom.conf
 
