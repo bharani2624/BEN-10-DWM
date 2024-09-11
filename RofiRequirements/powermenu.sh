@@ -35,7 +35,7 @@ confirm_exit() {
 }
 
 run_rofi() {
-	echo "$shutdown\n$reboot\n$wifi\n$bt" | rofi_cmd
+	echo -e "$shutdown\n$reboot\n$wifi\n$bt" | rofi_cmd
 }
 
 run_cmd() {
@@ -53,7 +53,7 @@ run_cmd() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-		run_cmd --shutdown
+		poweroff
         ;;
     $reboot)
 		run_cmd --reboot
