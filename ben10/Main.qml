@@ -8,6 +8,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
 import QtGraphicalEffects 1.15
+import QtMultimedia 5.15
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents3
@@ -466,28 +467,28 @@ PlasmaCore.ColorScope {
                 actionItemsVisible: !inputPanel.keyboardActive
                 actionItems: [
                     ActionButton {
-                        iconSource: "system-suspend"
+                        iconSource: "/usr/share/sddm/themes/ben10/AlienFace/JetFree.png"
                         text: i18ndc("plasma_lookandfeel_org.kde.lookandfeel", "Suspend to RAM", "Sleep")
                         fontSize: parseInt(config.fontSize) + 1
                         onClicked: sddm.suspend()
                         enabled: sddm.canSuspend
                     },
                     ActionButton {
-                        iconSource: "system-reboot"
+                        iconSource: "/usr/share/sddm/themes/ben10/AlienFace/BigChill.png"
                         text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Restart")
                         fontSize: parseInt(config.fontSize) + 1
                         onClicked: sddm.reboot()
                         enabled: sddm.canReboot
                     },
                     ActionButton {
-                        iconSource: "system-shutdown"
+                        iconSource: "/usr/share/sddm/themes/ben10/AlienFace/ben10.png"
                         text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Shut Down")
                         fontSize: parseInt(config.fontSize) + 1
                         onClicked: sddm.powerOff()
                         enabled: sddm.canPowerOff
                     },
                     ActionButton {
-                        iconSource: "system-user-list"
+                        iconSource: "/usr/share/sddm/themes/ben10/AlienFace/ChromaStone.png"
                         text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "List Users")
                         fontSize: parseInt(config.fontSize) + 1
                         onClicked: mainStack.pop()
@@ -541,6 +542,16 @@ PlasmaCore.ColorScope {
         //Footer
         RowLayout {
             id: footer
+            Audio{
+                id:omnitrixTimeOut
+                source:"/usr/share/sddm/themes/ben10/AlienFace/OmnitrixTimeOut.wav"
+                volume:1.0
+            }
+            Audio {
+                    id: itsHeroTime
+                    source: "/usr/share/sddm/themes/ben10/AlienFace/ItsHeroTime.wav"
+                    volume: 1.0
+            }
             anchors {
                 bottom: parent.bottom
                 left: parent.left
@@ -601,7 +612,8 @@ PlasmaCore.ColorScope {
     Connections {
         target: sddm
         function onLoginFailed() {
-            notificationMessage = i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Login Failed")
+            notificationMessage = i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Enter The Correct Secret Code")
+            omnitrixTimeOut.play()
             footer.enabled = true
             mainStack.enabled = true
             userListComponent.userList.opacity = 1
@@ -611,6 +623,7 @@ PlasmaCore.ColorScope {
             //note SDDM will kill the greeter at some random point after this
             //there is no certainty any transition will finish, it depends on the time it
             //takes to complete the init
+            itsHeroTime.play()
             mainStack.opacity = 0
             footer.opacity = 0
         }

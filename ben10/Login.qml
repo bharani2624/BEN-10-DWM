@@ -3,6 +3,7 @@ import "components"
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15 as QQC2
+import QtMultimedia 5.15
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents3
@@ -93,13 +94,18 @@ SessionManagementScreen {
 
     RowLayout {
         Layout.fillWidth: true
+        Audio {
+        id: omnitrixSound
+        source: "/usr/share/sddm/themes/ben10/AlienFace/ItsHeroTime.wav"
+        volume: 1.0
+    }
 
         PlasmaExtras.PasswordField {
             id: passwordBox
             font.pointSize: fontSize + 1
             Layout.fillWidth: true
 
-            placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Password")
+            placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "SecretCode For Omnitrix")
             focus: !showUsernamePrompt || lastUserName
 
             // Disable reveal password action because SDDM does not have the breeze icon set loaded
@@ -145,10 +151,15 @@ SessionManagementScreen {
             Layout.preferredHeight: passwordBox.implicitHeight
             Layout.preferredWidth: text.length === 0 ? loginButton.Layout.preferredHeight : -1
 
-            icon.name: text.length === 0 ? (root.LayoutMirroring.enabled ? "go-previous" : "go-next") : ""
+
+          background: Rectangle {
+            color: "transparent"
+        }
+
+            icon.name: text.length === 0 ? (root.LayoutMirroring.enabled ? "/usr/share/sddm/themes/ben10/AlienFace/O10.png" : "/usr/share/sddm/themes/ben10/AlienFace/O10.png") : ""
 
             text: root.showUsernamePrompt || userList.currentItem.needsPassword ? "" : i18n("Log In")
-            onClicked: startLogin()
+            onClicked:startLogin()
             Keys.onEnterPressed: clicked()
             Keys.onReturnPressed: clicked()
         }
