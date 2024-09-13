@@ -77,13 +77,20 @@ SessionManagementScreen {
 
     PlasmaComponents3.TextField {
         id: userNameInput
-        font.pointSize: fontSize + 1
-        Layout.fillWidth: true
-
+        font.pointSize: fontSize + 7
+        Layout.preferredHeight:40
+        Layout.preferredWidth:290
+        background:Rectangle
+        {
+            color:"transparent"
+            border.color:"green"
+            radius:5
+        }
         text: lastUserName
+        color:"green"
         visible: showUsernamePrompt
         focus: showUsernamePrompt && !lastUserName //if there's a username prompt it gets focus first, otherwise password does
-        placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Username")
+        placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Plumber Badge")
 
         onAccepted: {
             if (root.loginScreenUiVisible) {
@@ -100,12 +107,19 @@ SessionManagementScreen {
         volume: 1.0
     }
 
+
         PlasmaExtras.PasswordField {
             id: passwordBox
-            font.pointSize: fontSize + 1
-            Layout.fillWidth: true
-
-            placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "SecretCode For Omnitrix")
+            font.pointSize: fontSize + 7
+            color:"green"
+            Layout.preferredWidth:290
+            Layout.preferredHeight:40
+            background:Rectangle{
+                color:"transparent"
+                border.color:"green"
+                radius:5
+            }
+            placeholderText:"Secrect Code For Omnitrix"
             focus: !showUsernamePrompt || lastUserName
 
             // Disable reveal password action because SDDM does not have the breeze icon set loaded
