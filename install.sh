@@ -1,5 +1,6 @@
 #!/bin/sh
-sudo apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev feh dunst picom alacritty scrot
+sudo apt install build-essential libx11-dev libxft-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev
+sudo apt install libxrandr-dev feh dunst sddm picom alacritty scrot
 curl -sS https://starship.rs/install.sh | sh
 touch ~/.xinitrc
 cat<<EOF > ~/.xinitrc
@@ -28,11 +29,8 @@ active-opacity=0.90;
 frame-opacity=1.0;
 EOF
 
-# echo "$picom">~/.config/picom/picom.conf
-
-sudo apt install light
+sudo apt install sddm
 sudo apt install picom
-sudo apt install rofi
 mkdir ~/.config/rofi/shared
 sudo cp ~/BEN-10-DWM/requirements/wifi.sh ~/.config/rofi/
 sudo cp ~/BEN-10-DWM/requirements/bt.sh ~/.config/rofi/
