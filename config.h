@@ -110,7 +110,7 @@ static const Key keys[] = {
 	{MODKEY,			XK_F2,	   spawn,		   SHCMD("amixer set Master 1%-")},
 	{MODKEY	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+" )},
 	{MODKEY	,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle && notify-send 'Volume Toggled'")},
-	{MODKEY,			XK_w,	   spawn,			SHCMD("~/abdwm/RofiRequirements/powermenu.sh")},
+	{MODKEY,			XK_w,	   spawn,			SHCMD("~/powermenu.sh")},
 	{MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

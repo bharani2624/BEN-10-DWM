@@ -9,6 +9,12 @@ echo "Completed installing Dependencies"
 
 echo "........................................................................................................................................."
 
+cp -r ~/BEN-10-DWM/requirements/alacritty ~/.config/alacritty
+
+
+sudo cp -r ~/BEN-10-DWM/ben10 /usr/share/sddm/themes/ben10
+sudo cp ~/BEN-10-DWM/ben10/plasma.desktop /usr/share/xsessions/plasma.desktop
+
 cp ~/BEN-10-DWM/.xinitrc ~/.xinitrc
 sudo mkdir -p /usr/share/fonts/truetype/ben10
 sudo cp ~/BEN-10-DWM/GROBOLD.ttf /usr/share/fonts/truetype/ben10
@@ -27,7 +33,6 @@ inactive-opacity=0.90;
 active-opacity=0.90;
 frame-opacity=1.0;
 EOF
-
 
 mkdir -p ~/.config/rofi/shared
 sudo cp ~/BEN-10-DWM/requirements/Scripts/wifi.sh ~/.config/rofi/
@@ -50,11 +55,22 @@ mkdir -p ~/.config/rofi/colors
 sudo cp ~/BEN-10-DWM/RofiRequirements/ben10.rasi ~/.config/rofi/colors/ben10.rasi
 sudo cp ~/BEN-10-DWM/RofiRequirements/config.rasi ~/.config/rofi/config.rasi
 cd ~/BEN-10-DWM
-sudo make
-sudo make install
+
+sudo make && sudo make install
+if [ $? -eq 0 ]; then
+    echo "DWM Was Successfully Built"
+else
+    echo "There Was An Issue In Building DWM"
+    exit 1
+fi
 cd ~/BEN-10-DWM/abdsl
-sudo make
-sudo make install
+sudo make && sudo make install
+if [ $? -eq 0 ]; then
+    echo "SL Status Bar Was Successfully Built"
+else
+    echo "There Was An Issue In Building SL Status Bar"
+    exit 1
+fi
 cd
 echo "Completed Setting Up BEN10 DWM"
 
