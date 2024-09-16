@@ -1,0 +1,22 @@
+[colors.primary]
+background = "0x000000"
+foreground = "#328336"
+
+[cursor.style]
+shape = "Beam"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "monospace"
+style = "Bold"
+
+[scrolling]
+history = 10000
+
+[window]
+decorations = "full"
+dynamic_title = true
+opacity = 0.8
+title = "ABD"

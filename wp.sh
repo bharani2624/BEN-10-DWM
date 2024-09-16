@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dir="~/ben10W"
+dir="/home/abd/ben10W"
 case $1 in
 	1)wp="$dir/b10.jpg";;
 	2)wp="$dir/ABD.jpg";;

@@ -3,11 +3,11 @@ echo "Started To Add Configuration Files Kindly Enter 'Y' If Asked"
 
 echo "Started Installing Dependencies"
 sudo apt install build-essential libx11-dev libxft-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev
-sudo apt install libxrandr-dev feh dunst sddm picom alacritty scrot
+sudo apt install libxrandr-dev feh dunst sddm picom alacritty scrot curl rofi
 curl -sS https://starship.rs/install.sh | sh
 echo "Completed installing Dependencies"
 
-echo "....................................................................................."
+echo "........................................................................................................................................."
 
 cp ~/BEN-10-DWM/.xinitrc ~/.xinitrc
 sudo mkdir -p /usr/share/fonts/truetype/ben10
@@ -49,5 +49,12 @@ mkdir -p ~/.config/rofi/colors
 
 sudo cp ~/BEN-10-DWM/RofiRequirements/ben10.rasi ~/.config/rofi/colors/ben10.rasi
 sudo cp ~/BEN-10-DWM/RofiRequirements/config.rasi ~/.config/rofi/config.rasi
-
+cd ~/BEN-10-DWM
+sudo make
+sudo make install
+cd ~/BEN-10-DWM/abdsl
+sudo make
+sudo make install
+cd
+echo "Completed Setting Up BEN10 DWM"
 

@@ -2163,7 +2163,7 @@ view(const Arg *arg)
     char tag[4];
     snprintf(tag, sizeof(tag), "%d", (selmon->tagset[selmon->seltags] & TAGMASK) + 1); 
     char command[128];
-    snprintf(command, sizeof(command), "/home/abd/wp.sh %s", tag);
+    snprintf(command, sizeof(command), "~/wp.sh %s", tag);
     system(command);
 }
 
