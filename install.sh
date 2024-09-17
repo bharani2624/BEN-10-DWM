@@ -9,7 +9,7 @@ echo "Completed installing Dependencies"
 
 echo "........................................................................................................................................."
 
-sudo cp ~/BEN-10-DWM/Scripts/sddm.sh /usr/local/bin.sddm.sh
+sudo cp ~/BEN-10-DWM/Scripts/sddm.sh /usr/local/bin/sddm.sh
 sudo cp -r ~/BEN-10-DWM/ben10 /usr/share/sddm/themes/ben10
 sudo cp -r ~/BEN-10-DWM/ben10/sddm.conf /etc/sddm.conf
 sudo cp ~/BEN-10-DWM/ben10/plasma.desktop /usr/share/xsessions/plasma.desktop
