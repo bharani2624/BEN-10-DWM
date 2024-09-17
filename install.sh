@@ -8,8 +8,8 @@ curl -sS https://starship.rs/install.sh | sh
 echo "Completed installing Dependencies"
 
 echo "........................................................................................................................................."
-
 sudo cp -r ~/BEN-10-DWM/ben10 /usr/share/sddm/themes/ben10
+sudo cp -r ~/BEN-10-DWM/ben10/sddm.conf /etc/sddm.conf
 sudo cp ~/BEN-10-DWM/ben10/plasma.desktop /usr/share/xsessions/plasma.desktop
 
 echo "SDD Configuration Successfully Completed"
@@ -46,6 +46,7 @@ echo "Picom Configuration Is Successfully Completed"
 
 mkdir -p ~/.config/rofi/shared
 
+sudo cp ~/BEN-10-DWM/RofiRequirements/wp.sh ~/config/rofi/wp.sh
 sudo cp ~/BEN-10-DWM/RofiRequirements/powermenu.sh ~/config/rofi/powermenu.sh
 sudo cp ~/BEN-10-DWM/RofiRequirements/poweroff.sh ~/config/rofi/poweroff.sh
 sudo cp ~/BEN-10-DWM/requirements/Scripts/wifi.sh ~/.config/rofi/wifi.sh
