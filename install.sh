@@ -9,18 +9,26 @@ echo "Completed installing Dependencies"
 
 echo "........................................................................................................................................."
 
-cp -r ~/BEN-10-DWM/requirements/alacritty ~/.config/alacritty
-
-
 sudo cp -r ~/BEN-10-DWM/ben10 /usr/share/sddm/themes/ben10
 sudo cp ~/BEN-10-DWM/ben10/plasma.desktop /usr/share/xsessions/plasma.desktop
 
+echo "SDD Configuration Successfully Completed"
+
+cp -r ~/BEN-10-DWM/requirements/alacritty ~/.config/alacritty
+
+echo "Alacritty Configuration Is Successfully Completed"
+
+cp -r ~/BEN-10-DWM/requirements/dunst ~/.config/dunst
+
+echo "Dunst Configuration Is Successfully Completed"
+
 cp ~/BEN-10-DWM/.xinitrc ~/.xinitrc
+
 sudo mkdir -p /usr/share/fonts/truetype/ben10
-sudo cp ~/BEN-10-DWM/GROBOLD.ttf /usr/share/fonts/truetype/ben10
+sudo cp ~/BEN-10-DWM/fonts/GROBOLD.ttf /usr/share/fonts/truetype/ben10/GROBOLD.ttf
+sudo cp ~/BEN-10-DWM/fonts/JetBrains-Mono-Nerd-Font-Complete.ttf /usr/share/fonts/truetype/ben10/JetBrains-Mono-Nerd-Font-Complete
 mkdir -p ~/.config/picom
 touch ~/.config/picom/picom.conf
-
 
 cat<<EOF >~/.config/picom/picom.conf
 opacity-rule=[
@@ -34,9 +42,14 @@ active-opacity=0.90;
 frame-opacity=1.0;
 EOF
 
+echo "Picom Configuration Is Successfully Completed"
+
 mkdir -p ~/.config/rofi/shared
-sudo cp ~/BEN-10-DWM/requirements/Scripts/wifi.sh ~/.config/rofi/
-sudo cp ~/BEN-10-DWM/requirements/Scripts/bt.sh ~/.config/rofi/
+
+sudo cp ~/BEN-10-DWM/RofiRequirements/powermenu.sh ~/config/rofi/powermenu.sh
+sudo cp ~/BEN-10-DWM/RofiRequirements/poweroff.sh ~/config/rofi/poweroff.sh
+sudo cp ~/BEN-10-DWM/requirements/Scripts/wifi.sh ~/.config/rofi/wifi.sh
+sudo cp ~/BEN-10-DWM/requirements/Scripts/bt.sh ~/.config/rofi/bt.sh
 touch ~/.config/rofi/shared/colors.rasi
 cat<<EOF >~/.config/rofi/shared/colors.rasi
 @import "~/.config/rofi/colors/ben10"
@@ -54,6 +67,10 @@ mkdir -p ~/.config/rofi/colors
 
 sudo cp ~/BEN-10-DWM/RofiRequirements/ben10.rasi ~/.config/rofi/colors/ben10.rasi
 sudo cp ~/BEN-10-DWM/RofiRequirements/config.rasi ~/.config/rofi/config.rasi
+
+echo "Rofi Configuration Is Successfully Completed"
+
+
 cd ~/BEN-10-DWM
 
 sudo make && sudo make install
