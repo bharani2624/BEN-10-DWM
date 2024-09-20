@@ -111,6 +111,8 @@ static const Key keys[] = {
 	{MODKEY	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+" )},
 	{MODKEY	,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle && notify-send 'Volume Toggled'")},
 	{MODKEY,			XK_w,	   spawn,		   SHCMD("~/.config/rofi/powermenu.sh")},
+	{MODKEY,			XK_F8,	   spawn,		   SHCMD("xcalib -alter -blue 1.0 0.0 50.0 && notify-send 'Eye Protection Turned On'")},
+	{MODKEY,			XK_F9,	   spawn,		   SHCMD("xcalib -c && notify-send 'Eye Protection Turned Off'")},
 	{MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
