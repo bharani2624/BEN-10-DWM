@@ -107,8 +107,8 @@ static const Key keys[] = {
 	/*light(package) is used for controlling brightness */
 	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
 	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},
-	{MODKEY,			XK_F2,	   spawn,		   SHCMD("amixer set Master 1%-")},
-	{MODKEY	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 1%+" )},
+	{MODKEY,			XK_F2,	   spawn,		   SHCMD("amixer set Master 5%-")},
+	{MODKEY	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 5%+" )},
 	{MODKEY	,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle && notify-send 'Volume Toggled'")},
 	{MODKEY,			XK_w,	   spawn,		   SHCMD("~/.config/rofi/powermenu.sh")},
 	{MODKEY,			XK_F8,	   spawn,		   SHCMD("xcalib -alter -blue 1.0 0.0 50.0 && notify-send 'Eye Protection Turned On'")},
