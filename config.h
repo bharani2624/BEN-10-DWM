@@ -103,7 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Left,   viewprev,       {0} },
     { MODKEY|ShiftMask,             XK_Right,  tagtonext,      {0} },
 	{ MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} },
-	{MODKEY,			XK_Print,  spawn,	  SHCMD("scrot") },
+	{MODKEY,			XK_Print,  spawn,	  SHCMD("scrot $HOME/ScreenShots") },
 	/*light(package) is used for controlling brightness */
 	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
 	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},
