@@ -1,5 +1,25 @@
 # BEN-10-DWM
-**Ben 10 DWM** is a hobby project customized especially for Ben 10 fans.
+# Preview
+## BEN10-SDDM
+### Login
+![BEN10 SDDM](Preview/DWM.png)
+
+![BEN10 SDDM](Preview/SDDM.png)
+
+## BEN10-DWM
+### Home
+![BEN10 DWM](Preview/dwm.png)
+### Menu
+![BEN10 MENU](Preview/RofiMenu.png)
+
+### Power Menu
+![BEN10 POWER MENU](Preview/PowerMenu.png)
+
+### Wifi
+![BEN10 WIFI](Preview/Wifi.png)
+
+### Bluetooth
+![BEN10 BT](Preview/Bluetooth.png)
 
 > [!NOTE]
 > This project is still in development, so there may be incomplete functionalities or customizations. Contributions and feedback are welcome!
