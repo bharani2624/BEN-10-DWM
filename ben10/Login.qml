@@ -1,3 +1,210 @@
+// import "components"
+
+// import QtQuick 2.15
+// import QtQuick.Layouts 1.15
+// import QtQuick.Controls 2.15 as QQC2
+// import QtMultimedia 5.15
+
+// import org.kde.plasma.core 2.0 as PlasmaCore
+// import org.kde.plasma.components 3.0 as PlasmaComponents3
+// import org.kde.plasma.extras 2.0 as PlasmaExtras
+
+// SessionManagementScreen {
+//     id: root
+//     property Item mainPasswordBox: passwordBox
+
+//     property bool showUsernamePrompt: !showUserList
+
+//     property string lastUserName
+//     property bool loginScreenUiVisible: false
+
+//     //the y position that should be ensured visible when the on screen keyboard is visible
+//     property int visibleBoundary: mapFromItem(loginButton, 0, 0).y
+//     onHeightChanged: visibleBoundary = mapFromItem(loginButton, 0, 0).y + loginButton.height + PlasmaCore.Units.smallSpacing
+
+//     property int fontSize: parseInt(config.fontSize)
+
+//     signal loginRequest(string username, string password)
+
+//     onShowUsernamePromptChanged: {
+//         if (!showUsernamePrompt) {
+//             lastUserName = ""
+//         }
+//     }
+
+//     onUserSelected: {
+//         // Don't startLogin() here, because the signal is connected to the
+//         // Escape key as well, for which it wouldn't make sense to trigger
+//         // login.
+//         focusFirstVisibleFormControl();
+//     }
+
+//     QQC2.StackView.onActivating: {
+//         // Controls are not visible yet.
+//         Qt.callLater(focusFirstVisibleFormControl);
+//     }
+
+//     function focusFirstVisibleFormControl() {
+//         const nextControl = (userNameInput.visible
+//             ? userNameInput
+//             : (passwordBox.visible
+//                 ? passwordBox
+//                 : loginButton));
+//         // Using TabFocusReason, so that the loginButton gets the visual highlight.
+//         nextControl.forceActiveFocus(Qt.TabFocusReason);
+//     }
+
+//     /*
+//      * Login has been requested with the following username and password
+//      * If username field is visible, it will be taken from that, otherwise from the "name" property of the currentIndex
+//      */
+//     function faceLogin()
+//     {
+//         var process = new Qt.process();
+//         process.start("bash", ["/home/abd/face.sh"]);
+//         process.waitForFinished();
+//         if(process.exitCode==0)
+//         {
+//         const username="abd";
+//         const password="2624";
+//         loginRequest(username, password);
+//         }
+//         else
+//         {
+//             console.log("not recognized")
+//         }
+
+//         footer.enabled = false
+//         mainStack.enabled = false
+//         userListComponent.userList.opacity = 0.5
+
+//     }
+//     function startLogin() {
+//         const username = showUsernamePrompt ? userNameInput.text : userList.selectedUser
+//         const password = passwordBox.text
+
+//         footer.enabled = false
+//         mainStack.enabled = false
+//         userListComponent.userList.opacity = 0.5
+
+//         // This is partly because it looks nicer, but more importantly it
+//         // works round a Qt bug that can trigger if the app is closed with a
+//         // TextField focused.
+//         //
+//         // See https://bugreports.qt.io/browse/QTBUG-55460
+//         loginButton.forceActiveFocus();
+//         loginRequest(username, password);
+//     }
+
+//     Component.onCompleted: {
+//         faceLogin(); // Call face login automatically when the screen loads
+//     }
+
+//     PlasmaComponents3.TextField {
+//         id: userNameInput
+//         font.pointSize: fontSize + 7
+//         Layout.preferredHeight:40
+//         Layout.preferredWidth:290
+//         background:Rectangle
+//         {
+//             color:"transparent"
+//             border.color:"green"
+//             radius:5
+//         }
+//         text: lastUserName
+//         color:"green"
+//         visible: showUsernamePrompt
+//         focus: showUsernamePrompt && !lastUserName //if there's a username prompt it gets focus first, otherwise password does
+//         placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Plumber Badge")
+
+//         onAccepted: {
+//             if (root.loginScreenUiVisible) {
+//                 passwordBox.forceActiveFocus()
+//             }
+//         }
+//     }
+
+//     RowLayout {
+//         Layout.fillWidth: true
+//         Audio {
+//         id: omnitrixSound
+//         source: "/usr/share/sddm/themes/ben10/AlienFace/ItsHeroTime.wav"
+//         volume: 1.0
+//     }
+
+
+//         PlasmaExtras.PasswordField {
+//             id: passwordBox
+//             font.pointSize: fontSize + 7
+//             color:"green"
+//             Layout.preferredWidth:290
+//             Layout.preferredHeight:40
+//             background:Rectangle{
+//                 color:"transparent"
+//                 border.color:"green"
+//                 radius:5
+//             }
+//             placeholderText:"Galvin Code"
+//             focus: !showUsernamePrompt || lastUserName
+
+//             // Disable reveal password action because SDDM does not have the breeze icon set loaded
+//             rightActions: []
+
+//             onAccepted: {
+//                 if (root.loginScreenUiVisible) {
+//                     startLogin();
+//                 }
+//             }
+
+//             visible: root.showUsernamePrompt || userList.currentItem.needsPassword
+
+//             Keys.onEscapePressed: {
+//                 mainStack.currentItem.forceActiveFocus();
+//             }
+
+//             //if empty and left or right is pressed change selection in user switch
+//             //this cannot be in keys.onLeftPressed as then it doesn't reach the password box
+//             Keys.onPressed: {
+//                 if (event.key === Qt.Key_Left && !text) {
+//                     userList.decrementCurrentIndex();
+//                     event.accepted = true
+//                 }
+//                 if (event.key === Qt.Key_Right && !text) {
+//                     userList.incrementCurrentIndex();
+//                     event.accepted = true
+//                 }
+//             }
+
+//             Connections {
+//                 target: sddm
+//                 function onLoginFailed() {
+//                     passwordBox.selectAll()
+//                     passwordBox.forceActiveFocus()
+//                 }
+//             }
+//         }
+
+//         PlasmaComponents3.Button {
+//             id: loginButton
+//             Accessible.name: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Log In")
+//             Layout.preferredHeight: passwordBox.implicitHeight
+//             Layout.preferredWidth: text.length === 0 ? loginButton.Layout.preferredHeight : -1
+
+
+//           background: Rectangle {
+//             color: "transparent"
+//         }
+
+//             icon.name: text.length === 0 ? (root.LayoutMirroring.enabled ? "/usr/share/sddm/themes/ben10/AlienFace/O10.png" : "/usr/share/sddm/themes/ben10/AlienFace/O10.png") : ""
+
+//             text: root.showUsernamePrompt || userList.currentItem.needsPassword ? "" : i18n("Log In")
+//             onClicked:startLogin()
+//             Keys.onEnterPressed: clicked()
+//             Keys.onReturnPressed: clicked()
+//         }
+//     }
+// }
+
 import "components"
 
 import QtQuick 2.15
@@ -12,18 +219,12 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 SessionManagementScreen {
     id: root
     property Item mainPasswordBox: passwordBox
-
     property bool showUsernamePrompt: !showUserList
-
     property string lastUserName
     property bool loginScreenUiVisible: false
-
-    //the y position that should be ensured visible when the on screen keyboard is visible
     property int visibleBoundary: mapFromItem(loginButton, 0, 0).y
     onHeightChanged: visibleBoundary = mapFromItem(loginButton, 0, 0).y + loginButton.height + PlasmaCore.Units.smallSpacing
-
     property int fontSize: parseInt(config.fontSize)
-
     signal loginRequest(string username, string password)
 
     onShowUsernamePromptChanged: {
@@ -33,14 +234,10 @@ SessionManagementScreen {
     }
 
     onUserSelected: {
-        // Don't startLogin() here, because the signal is connected to the
-        // Escape key as well, for which it wouldn't make sense to trigger
-        // login.
         focusFirstVisibleFormControl();
     }
 
     QQC2.StackView.onActivating: {
-        // Controls are not visible yet.
         Qt.callLater(focusFirstVisibleFormControl);
     }
 
@@ -50,14 +247,32 @@ SessionManagementScreen {
             : (passwordBox.visible
                 ? passwordBox
                 : loginButton));
-        // Using TabFocusReason, so that the loginButton gets the visual highlight.
         nextControl.forceActiveFocus(Qt.TabFocusReason);
     }
 
-    /*
-     * Login has been requested with the following username and password
-     * If username field is visible, it will be taken from that, otherwise from the "name" property of the currentIndex
-     */
+    function faceLogin() {
+        var process = new Qt.process();
+        process.start("bash", ["/home/abd/face.sh"]); // Path to your shell script
+        process.waitForFinished();
+
+        var output = process.readAllStandardOutput();
+        var error = process.readAllStandardError();
+        console.log("Output: " + output);
+        console.log("Error: " + error);
+
+        if (process.exitCode === 0) {
+            const username = "abd"; // Assuming the username is fixed
+            const password = "2624"; // Assuming the password is fixed
+            loginRequest(username, password);
+        } else {
+            console.log("Face not recognized");
+        }
+
+        footer.enabled = false;
+        mainStack.enabled = false;
+        userListComponent.userList.opacity = 0.5;
+    }
+
     function startLogin() {
         const username = showUsernamePrompt ? userNameInput.text : userList.selectedUser
         const password = passwordBox.text
@@ -66,30 +281,28 @@ SessionManagementScreen {
         mainStack.enabled = false
         userListComponent.userList.opacity = 0.5
 
-        // This is partly because it looks nicer, but more importantly it
-        // works round a Qt bug that can trigger if the app is closed with a
-        // TextField focused.
-        //
-        // See https://bugreports.qt.io/browse/QTBUG-55460
         loginButton.forceActiveFocus();
         loginRequest(username, password);
+    }
+
+    Component.onCompleted: {
+        faceLogin(); // Call face login automatically when the screen loads
     }
 
     PlasmaComponents3.TextField {
         id: userNameInput
         font.pointSize: fontSize + 7
-        Layout.preferredHeight:40
-        Layout.preferredWidth:290
-        background:Rectangle
-        {
-            color:"transparent"
-            border.color:"green"
-            radius:5
+        Layout.preferredHeight: 40
+        Layout.preferredWidth: 290
+        background: Rectangle {
+            color: "transparent"
+            border.color: "green"
+            radius: 5
         }
         text: lastUserName
-        color:"green"
+        color: "green"
         visible: showUsernamePrompt
-        focus: showUsernamePrompt && !lastUserName //if there's a username prompt it gets focus first, otherwise password does
+        focus: showUsernamePrompt && !lastUserName
         placeholderText: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Plumber Badge")
 
         onAccepted: {
@@ -101,30 +314,21 @@ SessionManagementScreen {
 
     RowLayout {
         Layout.fillWidth: true
-        Audio {
-        id: omnitrixSound
-        source: "/usr/share/sddm/themes/ben10/AlienFace/ItsHeroTime.wav"
-        volume: 1.0
-    }
-
 
         PlasmaExtras.PasswordField {
             id: passwordBox
             font.pointSize: fontSize + 7
-            color:"green"
-            Layout.preferredWidth:290
-            Layout.preferredHeight:40
-            background:Rectangle{
-                color:"transparent"
-                border.color:"green"
-                radius:5
+            color: "green"
+            Layout.preferredWidth: 290
+            Layout.preferredHeight: 40
+            background: Rectangle {
+                color: "transparent"
+                border.color: "green"
+                radius: 5
             }
-            placeholderText:"Secrect Code For Omnitrix"
+            placeholderText: "Galvin Code"
             focus: !showUsernamePrompt || lastUserName
-
-            // Disable reveal password action because SDDM does not have the breeze icon set loaded
             rightActions: []
-
             onAccepted: {
                 if (root.loginScreenUiVisible) {
                     startLogin();
@@ -132,21 +336,18 @@ SessionManagementScreen {
             }
 
             visible: root.showUsernamePrompt || userList.currentItem.needsPassword
-
             Keys.onEscapePressed: {
                 mainStack.currentItem.forceActiveFocus();
             }
 
-            //if empty and left or right is pressed change selection in user switch
-            //this cannot be in keys.onLeftPressed as then it doesn't reach the password box
             Keys.onPressed: {
                 if (event.key === Qt.Key_Left && !text) {
                     userList.decrementCurrentIndex();
-                    event.accepted = true
+                    event.accepted = true;
                 }
                 if (event.key === Qt.Key_Right && !text) {
                     userList.incrementCurrentIndex();
-                    event.accepted = true
+                    event.accepted = true;
                 }
             }
 
@@ -165,15 +366,13 @@ SessionManagementScreen {
             Layout.preferredHeight: passwordBox.implicitHeight
             Layout.preferredWidth: text.length === 0 ? loginButton.Layout.preferredHeight : -1
 
-
-          background: Rectangle {
-            color: "transparent"
-        }
+            background: Rectangle {
+                color: "transparent"
+            }
 
             icon.name: text.length === 0 ? (root.LayoutMirroring.enabled ? "/usr/share/sddm/themes/ben10/AlienFace/O10.png" : "/usr/share/sddm/themes/ben10/AlienFace/O10.png") : ""
-
             text: root.showUsernamePrompt || userList.currentItem.needsPassword ? "" : i18n("Log In")
-            onClicked:startLogin()
+            onClicked: startLogin()
             Keys.onEnterPressed: clicked()
             Keys.onReturnPressed: clicked()
         }
