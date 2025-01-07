@@ -105,8 +105,10 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} },
 	{MODKEY,			XK_Print,  spawn,	  SHCMD("scrot $HOME/ScreenShots") },
 	/*light(package) is used for controlling brightness */
-	{0,					XF86XK_AudioRaiseVolume,	   spawn,		   SHCMD("light -A 2")},
-	{0,   				XF86XK_AudioLowerVolume,      spawn,		   SHCMD("light -U 2")	},
+	{MODKEY,			XK_F6,	   spawn,		   SHCMD("light -A 5")},
+	{MODKEY,   			XK_F5,     spawn,		   SHCMD("light -U 5")	},
+	{0,					XF86XK_AudioRaiseVolume,	  spawn,		   SHCMD("light -A 5")},
+	{0,   				XF86XK_AudioLowerVolume,      spawn,		   SHCMD("light -U 5")},
 	{MODKEY	,			XK_F2,	   spawn,		   SHCMD("amixer set Master 5%-")},
 	{MODKEY	,			XK_F3,	   spawn,		   SHCMD("amixer set Master 5%+" )},
 	{MODKEY	,			XK_F1,	   spawn,		   SHCMD("amixer set Master toggle && notify-send 'Volume Toggled'")},
