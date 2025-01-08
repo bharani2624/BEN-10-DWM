@@ -5,6 +5,8 @@ echo "Started Installing Dependencies"
 sudo apt install build-essential libx11-dev libxft-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev
 sudo apt install libxrandr-dev feh dunst sddm picom alacritty scrot curl rofi light xcalib
 curl -sS https://starship.rs/install.sh | sh
+echo 'eval "$(starship init bash)"' | sudo tee -a ~/.bashrc > /dev/null
+sudo cp ~/BEN-10-DWM/requirements/starship.toml ~/.config/starship.toml
 echo "Completed installing Dependencies"
 
 echo "........................................................................................................................................."
