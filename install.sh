@@ -3,14 +3,14 @@ echo "Started To Add Configuration Files Kindly Enter 'Y' If Asked"
 
 echo "Started Installing Dependencies"
 sudo apt install build-essential libx11-dev libxft-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev
-sudo apt install libxrandr-dev feh dunst sddm picom alacritty scrot curl rofi
+sudo apt install libxrandr-dev feh dunst sddm picom alacritty scrot curl rofi light xcalib
 curl -sS https://starship.rs/install.sh | sh
 echo "Completed installing Dependencies"
 
 echo "........................................................................................................................................."
 
-sudo cp ~/BEN-10-DWM/Scripts/sddm.sh /usr/local/bin/sddm.sh
-sudo cp ~/BEN-10-DWM/ben10W /usr/share/ben10w
+sudo cp ~/BEN-10-DWM/requirements/Scripts/sddm.sh /usr/local/bin/sddm.sh
+sudo cp -r ~/BEN-10-DWM/ben10W /usr/share/ben10w
 sudo cp -r ~/BEN-10-DWM/ben10 /usr/share/sddm/themes/ben10
 sudo cp -r ~/BEN-10-DWM/ben10/sddm.conf /etc/sddm.conf
 sudo cp ~/BEN-10-DWM/ben10/plasma.desktop /usr/share/xsessions/plasma.desktop
@@ -35,23 +35,29 @@ touch ~/.config/picom/picom.conf
 
 cat<<EOF >~/.config/picom/picom.conf
 opacity-rule=[
-        "90:class_g='Rofi'"
+        "90:class_g='Rofi'",
+	"100:class_g='google-chrome'"	
 ];
 /*inactive-opacity = 0.90;
 active-opacity = 1.0;
 frame-opacity = 0.90;*/
-inactive-opacity=0.90;
-active-opacity=0.90;
+inactive-opacity=1.00;
+active-opacity=1.00;
 frame-opacity=1.0;
+fading = true;
+fade-in-step = 0.03;
+fade-out-step = 0.03;
+vsync = true;
+backend = "glx";
 EOF
 
 echo "Picom Configuration Is Successfully Completed"
 
 mkdir -p ~/.config/rofi/shared
 
-sudo cp ~/BEN-10-DWM/RofiRequirements/wp.sh ~/config/rofi/wp.sh
-sudo cp ~/BEN-10-DWM/RofiRequirements/powermenu.sh ~/config/rofi/powermenu.sh
-sudo cp ~/BEN-10-DWM/RofiRequirements/poweroff.sh ~/config/rofi/poweroff.sh
+sudo cp ~/BEN-10-DWM/requirements/Scripts/wp.sh ~/.config/rofi/wp.sh
+sudo cp ~/BEN-10-DWM/RofiRequirements/powermenu.sh ~/.config/rofi/powermenu.sh
+sudo cp ~/BEN-10-DWM/RofiRequirements/poweroff.sh ~/.config/rofi/poweroff.sh
 sudo cp ~/BEN-10-DWM/requirements/Scripts/wifi.sh ~/.config/rofi/wifi.sh
 sudo cp ~/BEN-10-DWM/requirements/Scripts/bt.sh ~/.config/rofi/bt.sh
 touch ~/.config/rofi/shared/colors.rasi

@@ -1,4 +1,4 @@
-feh --bg-fill "/home/abd/ben10W/ABD.jpg"
+feh --bg-fill "/usr/share/ben10W/ABD.jpg
 picom &
 slstatus &
 dunst &
