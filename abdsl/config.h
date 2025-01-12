@@ -64,6 +64,7 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 static const char vol_cmd[] = "amixer sget Master | awk -F '[][]' '/Left:/ {print $2}'";
+static const char wifi_cmd[]="nmcli -t -f ACTIVE,SSID dev wifi | awk -F: '/^yes/ {print $2}'";
 static const struct arg args[] = {
 	/* function format          argument */
 	{datetime,"🗒️ %s || ","%F"},
@@ -71,6 +72,7 @@ static const struct arg args[] = {
 	{battery_perc," 🔋 %s%% || ","BAT1"},
 	{run_command," 🎝 %s ||",vol_cmd},
 	//{cpu_perc,"CPU : %s%% ||",NULL},
+	{run_command," %s ||",wifi_cmd},
 	{wifi_perc," 📶 %s%% ||","wlo1"},
 	{ram_perc," RAM : %s%% ",NULL}
 };
