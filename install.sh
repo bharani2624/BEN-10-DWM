@@ -9,7 +9,7 @@ echo 'eval "$(starship init bash)"' | sudo tee -a ~/.bashrc > /dev/null
 sudo cp ~/BEN-10-DWM/requirements/starship.toml ~/.config/starship.toml
 echo "Completed installing Dependencies"
 
-echo "........................................................................................................................................."
+echo "............................................................................................................................................................."
 
 sudo cp ~/BEN-10-DWM/requirements/Scripts/sddm.sh /usr/local/bin/sddm.sh
 sudo cp -r ~/BEN-10-DWM/ben10W /usr/share/ben10w
